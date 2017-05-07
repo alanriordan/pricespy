@@ -1,0 +1,15 @@
+<div>
+  <input type="text" [(ngModel)]="searchValue"/>
+  <button (click)="searchPrices(searchValue)">Search Prices</button> 
+</div>
+
+<div *ngIf="productList">  
+  <table>
+    <tr *ngFor="let product of productList">
+      <td><img [src]="product.imgUrl" width="50" height="50"></td>
+      <td>{{product.description}}</td>
+      <td>{{product.price}}</td>
+    </tr>
+  </table>
+  
+</div> 

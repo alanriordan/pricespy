@@ -1,6 +1,8 @@
-<h1>
-  {{title}}
-</h1>
+<div>
+  <input type="text" [(ngModel)]="searchValue"/>
+  <button (click)="searchPrices(searchValue)">Search Prices</button> 
+</div>
+
 <div style="width:50%;float:left">
   <div> TESCO </div>
 <product store="TESCO"></product>
@@ -9,4 +11,3 @@
   <div>SUPERVALUE</div>
   <product store="SUPERVALUE"></product>
 </div> 
-
