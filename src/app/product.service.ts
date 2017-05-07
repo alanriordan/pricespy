@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Product} from './product';
+import {StoreProduct} from './store-product';
 import {Http, Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { Observable }     from 'rxjs/Observable';
@@ -23,9 +24,16 @@ export class ProductService {
         
   }
 
-  private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
-    return Promise.reject(error.message || error);
-  }
+  getAllProductDetails(url:string, searchKey:string): Observable<StoreProduct[]>{
+    const searchUrl = `${url}?searchKey=${searchKey}`;
+    
+    return this.http.get(searchUrl).map(
+        (response) => {
+          var storeproducts = response.json() as StoreProduct[];
+          console.log("Products : " + response);
+          return storeproducts;
+        }
+      )        
+  } 
 
 }

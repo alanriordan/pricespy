@@ -1,15 +1,18 @@
-<div>
-  <input type="text" [(ngModel)]="searchValue"/>
-  <button (click)="searchPrices(searchValue)">Search Prices</button> 
-</div>
-
-<div *ngIf="productList">  
-  <table>
-    <tr *ngFor="let product of productList">
-      <td><img [src]="product.imgUrl" width="50" height="50"></td>
-      <td>{{product.description}}</td>
-      <td>{{product.price}}</td>
-    </tr>
-  </table>
+<div *ngIf="storeProductList">  
+  
+    <div *ngFor="let storeProduct of storeProductList">     
+     
+      <div *ngIf="store == storeProduct.store">
+          <table>
+            <th colspan="3">{{store}}</th>
+            <tr *ngFor="let productData of storeProduct.productData">
+              <td><img [src]="productData.imgUrl" width="50" height="50"></td>
+               <td>{{productData.description}}</td>
+                <td>{{productData.price}}</td>
+            </tr>
+          </table>
+      </div>
+     
+  </div>
   
 </div> 
